@@ -1,0 +1,29 @@
+Source Code Management
+
+SCM is a tool used to track, merge, update, shared into a source code repository.
+The most impotant advantages is collaborative code development.
+
+Best Practices:
+
+- Frecuently commits.
+- Keeping the code update
+- Commit log messages should explain the “why” and “what”
+- Review changes before one commit
+- Uses Branches
+
+Why Git
+
+- Git is mature
+- The most version control used 
+- Committing new changes, branching, merging and comparing past versions are all optimized for performance. 
+
+Workflow usign git:
+
+Git Flow
+
+it is a git branching model usign features and branches and multiple primary banches.
+
+
+
+
+
