@@ -1,0 +1,20 @@
+Infrastructure as Code
+
+IaC permit manage and prepare the infrastructure using code instead doing manually.
+creating configurations files that contains all the specifications of the infrastructure needed, allowing the control of version.
+other of the advantages is allow the automation the creation of the infrastructure 
+
+
+Why Terraform:
+- Allow to create infrastructure of many providers.
+- Allow to manage big infrastructure.
+- Use easy declarative language with simple syntax.
+- The terraform files can be easyly sharing and reusabled.
+- Control version of the infrastructure.
+
+Terraform good practices:
+- Have a properly structure of files.
+- Use name convention.
+- Use terraform modules.
+- One model should have one responsibility.
+- Use var files.
