@@ -29,3 +29,8 @@ variable "subnet_address_prefix" {
     }
   }
 }
+
+variable "resource_name" {
+  type    = string
+  default = "j.montoya_rg"
+}

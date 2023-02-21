@@ -14,13 +14,8 @@ provider "azurerm" {
   features {}
 }
 
-module "rg" {
-  source        = "../module/resource_group"
-  resource_name = "j.montoya_rg"
-  location      = var.location
-  tags = {
-    Name = "j.montoya_rg"
-  }
+data "azurerm_resources" "resource_group" {
+  resource_group_name = var.resource_name
 }
 
 module "vnet" {
@@ -29,7 +24,7 @@ module "vnet" {
   location              = var.location
   address_space         = ["192.168.0.0/16"]
   dns_servers           = ["192.168.0.4", "192.168.0.5"]
-  resource_group_name   = module.rg.resource_name
+  resource_group_name   = var.resource_name
   subnet_address_prefix = var.subnet_address_prefix
   tags = {
     Name = "vnet_ramp_up"
@@ -37,10 +32,10 @@ module "vnet" {
 }
 
 module "front_lb_module" {
-  source        = "../module/load_balancer"
-  lb_name       = "front-lb"
-  location      = var.location
-  resource_name = module.rg.resource_name
-  subnet_id     = module.vnet.subnet_ids[0]
+  source              = "../module/load_balancer"
+  lb_name             = "front-lb"
+  location            = var.location
+  resource_name       = var.resource_name
+  subnet_id           = module.vnet.subnet_ids[0]
 }
 

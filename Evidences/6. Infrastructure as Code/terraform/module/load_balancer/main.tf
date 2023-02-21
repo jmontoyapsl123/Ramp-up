@@ -15,9 +15,9 @@ resource "azurerm_lb_rule" "lb-rule" {
 }
 
 resource "azurerm_lb_probe" "probe-lb" {
-  loadbalancer_id = azurerm_lb.front-lb.id
-  name            = "running-probe"
-  port            = 8080
+  loadbalancer_id     = azurerm_lb.front-lb.id
+  name                = "running-probe"
+  port                = 8080
 }
 
 resource "azurerm_lb" "front-lb" {

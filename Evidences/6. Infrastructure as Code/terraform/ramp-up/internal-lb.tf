@@ -1,7 +1,7 @@
 module "back_lb_module" {
   source              = "../module/internal_load_balancer"
   location            = var.location
-  resource-group-name = module.rg.resource_name
+  resource-group-name = var.resource_name
   subnet_id           = module.vnet.subnet_ids[1]
   ip_address_lb       = "192.168.2.10"
   internal-name-lb    = "back-lb"
@@ -9,7 +9,7 @@ module "back_lb_module" {
 
 module "probe-auth-lb" {
   source              = "../module/probe_load_balancer"
-  resource-group-name = module.rg.resource_name
+  resource-group-name = var.resource_name
   load-balancer-id    = module.back_lb_module.lb_internal_id
   probe-name-lb       = "back-auth-probe-lb"
   probe-port-lb       = 8000
@@ -17,7 +17,7 @@ module "probe-auth-lb" {
 
 module "probe-user-lb" {
   source              = "../module/probe_load_balancer"
-  resource-group-name = module.rg.resource_name
+  resource-group-name = var.resource_name
   load-balancer-id    = module.back_lb_module.lb_internal_id
   probe-name-lb       = "back-user-probe-lb"
   probe-port-lb       = 8083
@@ -25,7 +25,7 @@ module "probe-user-lb" {
 
 module "probe-todos-lb" {
   source              = "../module/probe_load_balancer"
-  resource-group-name = module.rg.resource_name
+  resource-group-name = var.resource_name
   load-balancer-id    = module.back_lb_module.lb_internal_id
   probe-name-lb       = "back-todos-probe-lb"
   probe-port-lb       = 8082
@@ -34,7 +34,7 @@ module "probe-todos-lb" {
 module "network-interface-auth" {
   source                = "../module/network_interface"
   location              = var.location
-  resource-group-name   = module.rg.resource_name
+  resource-group-name   = var.resource_name
   network_name          = "network-interface-auth"
   ip_configuration_name = "ip-config-auth"
   private_ip            = "192.168.2.11"
@@ -44,7 +44,7 @@ module "network-interface-auth" {
 module "backend-address-pool-auth" {
   source               = "../module/back_address_pool"
   backend-pool-lb-name = "back-auth-pool-lb"
-  resource-group-name  = module.rg.resource_name
+  resource-group-name  = var.resource_name
   load-balancer-id     = module.back_lb_module.lb_internal_id
 }
 
@@ -58,7 +58,7 @@ module "network-interface-pool-auth" {
 module "network-interface-user" {
   source                = "../module/network_interface"
   location              = var.location
-  resource-group-name   = module.rg.resource_name
+  resource-group-name   = var.resource_name
   network_name          = "network-interface-user"
   ip_configuration_name = "ip-config-user"
   private_ip            = "192.168.2.12"
@@ -68,7 +68,7 @@ module "network-interface-user" {
 module "backend-address-pool-user" {
   source               = "../module/back_address_pool"
   backend-pool-lb-name = "back-user-pool-lb"
-  resource-group-name  = module.rg.resource_name
+  resource-group-name  = var.resource_name
   load-balancer-id     = module.back_lb_module.lb_internal_id
 }
 
@@ -82,7 +82,7 @@ module "network-interface-pool-user" {
 module "network-interface-todos" {
   source                = "../module/network_interface"
   location              = var.location
-  resource-group-name   = module.rg.resource_name
+  resource-group-name   = var.resource_name
   network_name          = "network-interface-todos"
   ip_configuration_name = "ip-config-todos"
   private_ip            = "192.168.2.13"
@@ -92,7 +92,7 @@ module "network-interface-todos" {
 module "backend-address-pool-todos" {
   source               = "../module/back_address_pool"
   backend-pool-lb-name = "back-todos-pool-lb"
-  resource-group-name  = module.rg.resource_name
+  resource-group-name  = var.resource_name
   load-balancer-id     = module.back_lb_module.lb_internal_id
 }
 

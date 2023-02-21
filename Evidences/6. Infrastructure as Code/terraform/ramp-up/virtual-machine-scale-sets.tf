@@ -1,6 +1,6 @@
 module "virtual_machine_scale-set-auth" {
   source                                 = "../module/virtual_machine"
-  resource_group_name                    = module.rg.resource_name
+  resource_group_name                    = var.resource_name
   admin_user                             = "admin"
   admin_password                         = "Pasword123*"
   location                               = var.location
@@ -13,7 +13,7 @@ module "virtual_machine_scale-set-auth" {
 
 module "virtual_machine_scale-set-user" {
   source                                 = "../module/virtual_machine"
-  resource_group_name                    = module.rg.resource_name
+  resource_group_name                    = var.resource_name
   admin_user                             = "admin"
   admin_password                         = "Pasword123*"
   location                               = var.location
@@ -26,7 +26,7 @@ module "virtual_machine_scale-set-user" {
 
 module "virtual_machine_scale-set-todos" {
   source                                 = "../module/virtual_machine"
-  resource_group_name                    = module.rg.resource_name
+  resource_group_name                    = var.resource_name
   admin_user                             = "admin"
   admin_password                         = "Pasword123*"
   location                               = var.location
@@ -39,7 +39,7 @@ module "virtual_machine_scale-set-todos" {
 
 module "virtual_machine_scale-set-log" {
   source                                 = "../module/virtual_machine"
-  resource_group_name                    = module.rg.resource_name
+  resource_group_name                    = var.resource_name
   admin_user                             = "admin"
   admin_password                         = "Pasword123*"
   location                               = var.location
