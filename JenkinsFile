@@ -1,20 +1,27 @@
 pipeline {
     agent any
-
+    environment {
+        AZURE_SUBSCRIPTION_ID     = credentials('devopsSubscriptionId')
+        AZURE_TENANT_ID = credentials('tenantId')
+    }
     stages {
-        stage('Build') {
+        stage('Terraform Init') {
             steps {
-                echo 'Building..'
+                echo 'Terraform Init'
+                 dir('Evidences/6. Infrastructure as Code/terraform/ramp-up') {
+                    bat 'terraform init'
+                }
             }
         }
-        stage('Test') {
+        stage('Terraform Plan') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                echo 'Terraform Plan'
+                withCredentials([usernamePassword(credentialsId: 'azuresp', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
+                   echo 'Terraform Plan - withCredentials' 
+                  bat "az login --service-principal -u %AZURE_CLIENT_ID% -p %AZURE_CLIENT_SECRET% -t %AZURE_TENANT_ID%"
+                  bat 'az account set -s %AZURE_SUBSCRIPTION_ID%'
+                }
+
             }
         }
     }

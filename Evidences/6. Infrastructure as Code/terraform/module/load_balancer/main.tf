@@ -7,7 +7,6 @@ resource "azurerm_public_ip" "public-ip-lb" {
 
 resource "azurerm_lb_rule" "lb-rule" {
   loadbalancer_id                = azurerm_lb.front-lb.id
-  resource_group_name            = var.resource_name
   name                           = "rule-lb"
   protocol                       = "Tcp"
   frontend_port                  = 8080
@@ -16,10 +15,9 @@ resource "azurerm_lb_rule" "lb-rule" {
 }
 
 resource "azurerm_lb_probe" "probe-lb" {
-  resource_group_name = var.resource_name
-  loadbalancer_id     = azurerm_lb.front-lb.id
-  name                = "running-probe"
-  port                = 8080
+  loadbalancer_id = azurerm_lb.front-lb.id
+  name            = "running-probe"
+  port            = 8080
 }
 
 resource "azurerm_lb" "front-lb" {
