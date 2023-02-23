@@ -1,0 +1,25 @@
+Docker scripts:
+- sudo docker build . -t <name-image> => create image
+- sudo docker ps => list run container
+- sudo docker images => list created images
+- sudo docker run --rm --net <name-network> --name <name-container> => Run images and put it in a network
+- sudo docker network create <name-network> => create a network
+- sudo docker network ls => List all networks 
+- sudo docker rmi <image-id> -f => force to delete a docker images
+- sudo docker rm <container-id> -f => force to delete a docker container
+
+
+Docker Script Ramp-up:
+
+- sudo docker run --net rampup --name front -p 8080:8080 -d front/node-web
+- sudo docker run --net rampup --name auth -p 8000:8000 -d auth/go
+- sudo docker run --net rampup --name todos-api -p 8082:8082 -d todo-api/node
+- sudo docker run --net rampup --name user-api -p 8083:8083 -d users-api/mvn
+- sudo docker run --net rampup --name redis -p 6379:6379 -d log/redis
+- sudo docker run --net rampup --name python -d log/python
+
+
+
+
+
+ 
