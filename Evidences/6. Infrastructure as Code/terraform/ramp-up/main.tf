@@ -27,15 +27,17 @@ module "vnet" {
   resource_group_name   = var.resource_name
   subnet_address_prefix = var.subnet_address_prefix
   tags = {
-    Name = "vnet_ramp_up"
+    Name        = "vnet_ramp_up"
+    Proyecto    = "Ramp_up"
+    Responsable = "jmontoya_ramp_up"
   }
 }
 
 module "front_lb_module" {
-  source              = "../module/load_balancer"
-  lb_name             = "front-lb"
-  location            = var.location
-  resource_name       = var.resource_name
-  subnet_id           = module.vnet.subnet_ids[0]
+  source        = "../module/load_balancer"
+  lb_name       = "front-lb"
+  location      = var.location
+  resource_name = var.resource_name
+  subnet_id     = module.vnet.subnet_ids[0]
 }
 

@@ -3,6 +3,11 @@ resource "azurerm_public_ip" "public-ip-lb" {
   location            = var.location
   resource_group_name = var.resource_name
   allocation_method   = "Static"
+  ip_tags = {
+    Name        = "public_ip_lb_ramp_up"
+    Proyecto    = "Ramp_up"
+    Responsable = "jmontoya_ramp_up"
+  }
 }
 
 resource "azurerm_lb_rule" "lb-rule" {
@@ -15,9 +20,9 @@ resource "azurerm_lb_rule" "lb-rule" {
 }
 
 resource "azurerm_lb_probe" "probe-lb" {
-  loadbalancer_id     = azurerm_lb.front-lb.id
-  name                = "running-probe"
-  port                = 8080
+  loadbalancer_id = azurerm_lb.front-lb.id
+  name            = "running-probe"
+  port            = 8080
 }
 
 resource "azurerm_lb" "front-lb" {
