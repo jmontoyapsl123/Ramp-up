@@ -55,4 +55,10 @@ resource "azurerm_virtual_machine_scale_set" "vitual-machine-scale-set" {
     }
   }
 
+  tags = {
+    Responsable = "jmontoya-ramp-up"
+    Proyecto    = "ramp-up"
+    Creator     = "jmontoya"
+  }
+
 }

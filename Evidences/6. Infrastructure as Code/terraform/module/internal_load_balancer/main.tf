@@ -9,5 +9,10 @@ resource "azurerm_lb" "internal-lb" {
     private_ip_address            = var.ip_address_lb
     private_ip_address_allocation = "Static"
   }
+  tags = {
+    Responsable = "jmontoya-ramp-up"
+    Proyecto    = "ramp-up"
+    Creator     = "jmontoya"
+  }
 }
  

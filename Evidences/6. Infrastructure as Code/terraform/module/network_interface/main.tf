@@ -8,4 +8,9 @@ resource "azurerm_network_interface" "network-interface" {
     private_ip_address_allocation = "Static"
     private_ip_address            = var.private_ip
   }
+  tags = {
+    Responsable = "jmontoya-ramp-up"
+    Proyecto    = "ramp-up"
+    Creator     = "jmontoya"
+  }
 }

@@ -99,6 +99,6 @@ module "backend-address-pool-todos" {
 module "network-interface-pool-todos" {
   source                  = "../module/network_interface_backend_Address"
   backend_address_pool_id = module.backend-address-pool-todos.backend_address_pool_id
-  ip_configuration_name   = "ip-config-user"
+  ip_configuration_name   = "ip-config-todos"
   network_interface_id    = module.network-interface-todos.network_interface_id
 }

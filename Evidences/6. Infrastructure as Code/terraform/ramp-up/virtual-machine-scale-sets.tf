@@ -1,7 +1,7 @@
 module "virtual_machine_scale-set-auth" {
   source                                 = "../module/virtual_machine"
   resource_group_name                    = var.resource_name
-  admin_user                             = "admin"
+  admin_user                             = "jmontoyag"
   admin_password                         = "Pasword123*"
   location                               = var.location
   subnet_id                              = module.vnet.subnet_ids[1]
@@ -14,7 +14,7 @@ module "virtual_machine_scale-set-auth" {
 module "virtual_machine_scale-set-user" {
   source                                 = "../module/virtual_machine"
   resource_group_name                    = var.resource_name
-  admin_user                             = "admin"
+  admin_user                             = "jmontoyag"
   admin_password                         = "Pasword123*"
   location                               = var.location
   subnet_id                              = module.vnet.subnet_ids[1]
@@ -27,7 +27,7 @@ module "virtual_machine_scale-set-user" {
 module "virtual_machine_scale-set-todos" {
   source                                 = "../module/virtual_machine"
   resource_group_name                    = var.resource_name
-  admin_user                             = "admin"
+  admin_user                             = "jmontoyag"
   admin_password                         = "Pasword123*"
   location                               = var.location
   subnet_id                              = module.vnet.subnet_ids[1]
@@ -40,7 +40,7 @@ module "virtual_machine_scale-set-todos" {
 module "virtual_machine_scale-set-log" {
   source                                 = "../module/virtual_machine"
   resource_group_name                    = var.resource_name
-  admin_user                             = "admin"
+  admin_user                             = "jmontoyag"
   admin_password                         = "Pasword123*"
   location                               = var.location
   subnet_id                              = module.vnet.subnet_ids[2]

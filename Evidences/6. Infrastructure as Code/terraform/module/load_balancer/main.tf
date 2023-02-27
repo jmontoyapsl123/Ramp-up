@@ -3,10 +3,10 @@ resource "azurerm_public_ip" "public-ip-lb" {
   location            = var.location
   resource_group_name = var.resource_name
   allocation_method   = "Static"
-  ip_tags = {
-    Name        = "public_ip_lb_ramp_up"
-    Proyecto    = "Ramp_up"
-    Responsable = "jmontoya_ramp_up"
+  tags = {
+    Responsable = "jmontoya-ramp-up"
+    Proyecto    = "ramp-up"
+    Creator     = "jmontoya"
   }
 }
 
@@ -16,7 +16,7 @@ resource "azurerm_lb_rule" "lb-rule" {
   protocol                       = "Tcp"
   frontend_port                  = 8080
   backend_port                   = 8080
-  frontend_ip_configuration_name = "public-ip-lb"
+  frontend_ip_configuration_name = "public-ip"
 }
 
 resource "azurerm_lb_probe" "probe-lb" {
@@ -33,6 +33,12 @@ resource "azurerm_lb" "front-lb" {
   frontend_ip_configuration {
     name                 = "public-ip"
     public_ip_address_id = azurerm_public_ip.public-ip-lb.id
+  }
+
+  tags = {
+    Responsable = "jmontoya-ramp-up"
+    Proyecto    = "ramp-up"
+    Creator     = "jmontoya"
   }
 }
 

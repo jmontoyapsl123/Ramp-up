@@ -5,7 +5,7 @@ variable "location" {
 
 variable "zone" {
   type    = string
-  default = "eastus"
+  default = "1"
 }
 variable "subscription_id" {
   type    = string
